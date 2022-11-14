@@ -1,9 +1,10 @@
 <template>
-    <div class="character">
-        <img :src="item.img" :alt="item.name">
-        <h2>{{ item.name }}</h2>
-        <h2>{{ item.nickname }}</h2>
-        <h3>{{ item.status }}</h3>
+    <div class="character text-center">
+        <img :src="character.img" :alt="character.name">
+        <h2>{{ character.name }}</h2>
+        <h2>{{ character.nickname }}</h2>
+        <h3>{{ character.status }}</h3>
+        <h3>{{ character.category }}</h3>
     </div>
 </template>
 

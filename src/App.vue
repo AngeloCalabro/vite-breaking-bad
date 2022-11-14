@@ -1,5 +1,5 @@
 <template>
-  <AppHeader title="Vite Breaking Bad" />
+  <AppHeader title="Breaking Bad" />
   <main>
     <!-- <AppSearch /> -->
     <CharacterList :characters="characterList" :loading="loading" />
@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      apiURL: 'https://www.breakingbadapi.com/api/characters',
+      apiURL: 'https://www.breakingbadapi.com/api/characters/',
       characterList: [],
       loading: false,
     }
@@ -29,7 +29,7 @@ export default {
       this.loading = true;
       axios.get(this.apiURL).then(
         (res) => {
-          this.characterList = [...res.data.results];
+          this.characterList = [...res.data];
           console.log(this.characterList)
           this.loading = false;
         }
