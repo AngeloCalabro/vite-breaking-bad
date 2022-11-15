@@ -1,6 +1,6 @@
 <template>
     <div class="search-bar ps-2 my-3">
-        <select name="category" @change="searchCategory">
+        <select name="category" @change="searchCategory" v-model="store.category">
             <option selected value="">Select category</option>
             <option :value="cat" v-for="(cat, index) in category" :key="index">{{ cat }}</option>
         </select>

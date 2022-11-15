@@ -1,10 +1,14 @@
 <template>
     <div class="container p-4 cards-container">
         <NavbarComponent @filtercategory="getCharacters"/> 
-        <div class="black-bar">
+        <div class="result-bar">
             <p>Found {{ store.characterList.length }} characters</p>
         </div>
         <CardComponent :characters="store.characterList" :loading="store.loading" />
+        <div v-if="store.errormessage">
+            <h1> Opps ! Qualcosa è andato storto</h1>
+            <p>{{ store.errormessage }}</p>
+        </div>
     </div>
 </template>
 
@@ -26,10 +30,10 @@ export default {
         getCharacters() {
             store.errormessage = '';
             let options = null;
-            if (store.search.category) {
+            if (store.category) {
                 options = {
                     params: {
-                        category: store.search.category,
+                        category: store.category,
                     }
                 }
             };
@@ -61,7 +65,7 @@ export default {
     background-color: white;
 }
 
-.black-bar {
+.result-bar {
     background-color: $black-bar;
     font-weight: bold;
     height: 50px;
