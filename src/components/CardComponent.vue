@@ -45,7 +45,6 @@ export default {
         .category-status {
             color: $text-gray;
             padding-top: 10px;
-
         }
     }
 }

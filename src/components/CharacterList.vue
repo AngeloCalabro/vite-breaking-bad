@@ -30,13 +30,26 @@ export default {
         getCharacters() {
             store.errormessage = '';
             let options = null;
-            if (store.category) {
+            if (store.category && store.status) {
+                options = {
+                    params: {
+                        category: store.category,
+                        status: store.status,
+                    }
+                }
+            } else if (store.category){
                 options = {
                     params: {
                         category: store.category,
                     }
                 }
-            };
+            } else if (store.status) {
+                options = {
+                    params: {
+                        status: store.status,
+                    }
+                }
+            }
             store.loading = true;
             const apiurl = store.apiURL + this.endPoint;
             axios.get(apiurl, options).then(

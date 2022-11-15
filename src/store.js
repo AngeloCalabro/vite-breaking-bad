@@ -5,5 +5,6 @@ export const store = reactive({
     characterList: [],
     loading: false,
     category: '',
+    status: '',
     errormessage: '',
 });
