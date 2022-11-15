@@ -1,10 +1,10 @@
 <template>
-    <div class="character text-center">
-        <img :src="character.img" :alt="character.name">
-        <h2>{{ character.name }}</h2>
-        <h2>{{ character.nickname }}</h2>
-        <h3>{{ character.status }}</h3>
-        <h3>{{ character.category }}</h3>
+    <div class="text-center">
+        <img :src="element.img" :alt="element.name">
+        <h2>{{ element.name }}</h2>
+        <h2>{{ element.nickname }}</h2>
+        <h3>{{ element.status }}</h3>
+        <h3>{{ element.category }}</h3>
     </div>
 </template>
 
@@ -12,7 +12,7 @@
 export default {
     name: 'CardComponent',
     props: {
-        character: Object
+        element: Object
     }
 }
 </script>
