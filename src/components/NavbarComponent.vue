@@ -1,15 +1,30 @@
 <template>
     <div class="search-bar ps-2 my-3">
-        <select name="category" id="">
-            <option selected value="select category">Select category</option>
-            <option value="alive">Alive</option>
+        <select name="category" @change="searchCategory">
+            <option selected value="">Select category</option>
+            <option :value="cat" v-for="(cat, index) in category" :key="index">{{ cat }}</option>
         </select>
     </div>
 </template>
 
 <script>
+import { store } from '../store';
 export default {
-    name: 'NavbarComponent'
+    name: 'NavbarComponent',
+    data(){
+        return{
+            store,
+            category :[
+                'Breaking Bad',
+                'Better Call Saul'
+            ]
+        }
+    },
+    methods: {
+        searchCategory() {
+            this.$emit('filtercategory');
+        }
+    }
 }
 </script>
 

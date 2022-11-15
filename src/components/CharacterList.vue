@@ -1,7 +1,8 @@
 <template>
     <div class="container p-4 cards-container">
+        <NavbarComponent @filtercategory="getCharacters"/> 
         <div class="black-bar">
-            <p>Found 62 characters</p>
+            <p>Found {{ characterList.length }} characters</p>
         </div>
         <CardComponent :characters="characterList" :loading="loading" />
     </div>
@@ -10,11 +11,14 @@
 <script>
 import axios from 'axios';
 import CardComponent from './CardComponent.vue';
+import NavbarComponent from './NavbarComponent.vue';
+import { store } from '../store';
 export default {
     name: 'CharacterList',
-    components: { CardComponent },
+    components: { CardComponent, NavbarComponent },
     data() {
         return {
+            store,
             apiUrl: 'https://www.breakingbadapi.com/api/characters',
             characterList: [],
             loading: false,

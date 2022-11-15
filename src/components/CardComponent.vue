@@ -1,16 +1,15 @@
 <template>
     <div class="p-5" v-if="loading">
-        <p class="fw-bold text-black">Loading...</p>
+        <p class="fw-bold text-black text-center">Loading...</p>
     </div>
     <div class="d-flex flex-wrap" v-else="!loading">
-        <div class="vz_col" v-for="(item) in characters" :key="item.char_id">
-            <div class="single-card">
-                <img :src="item.img" :alt="item.name" class="mb-2">
-                <span class="fw-bold text-uppercase">{{ item.name }}</span>
+        <div class="my_col" v-for="(item) in characters" :key="item.char_id">
+            <div class="card single-card">
+                <img :src="item.img" :alt="item.name" class="img-fluid mb-2">
+                <h6 class="fw-bold text-uppercase">{{ item.name }}</h6>
                 <div class="category-status">
-                    <span>{{ item.category }}</span>
-                    <br>
-                    <span>{{ item.status }}</span>
+                    <h6>{{ item.category }}</h6>
+                    <h6>{{ item.status }}</h6>
                 </div>
             </div>
         </div>
@@ -27,7 +26,7 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/styles/partials/variables' as *;
 
-.vz_col {
+.my_col {
     width: calc(100% / 5);
 
     .single-card {
@@ -41,9 +40,6 @@ export default {
             color: $text-gray;
             padding-top: 10px;
 
-            span:last-of-type {
-                font-size: 14px;
-            }
         }
     }
 }
