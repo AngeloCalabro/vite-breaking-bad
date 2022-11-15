@@ -1,8 +1,8 @@
 <template>
-    <div class="p-5" v-if="loading">
+    <div class="p-5" v-if="store.loading">
         <p class="fw-bold text-black text-center">Loading...</p>
     </div>
-    <div class="d-flex flex-wrap" v-else="!loading">
+    <div class="d-flex flex-wrap" v-else="!store.loading">
         <div class="my_col" v-for="(item) in characters" :key="item.char_id">
             <div class="card single-card">
                 <img :src="item.img" :alt="item.name" class="img-fluid mb-2">
@@ -17,9 +17,15 @@
 </template>
 
 <script>
+import { store } from '../store';
 export default {
     name: 'CardComponent',
-    props: ['characters', 'loading']
+    props: ['characters'],
+    data(){
+        return{
+            store
+        }
+    }
 }
 </script>
 

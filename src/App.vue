@@ -6,8 +6,14 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
 import CharacterList from './components/CharacterList.vue';
+import { store } from './store';
 export default {
-  components: { AppHeader, CharacterList }
+  components: { AppHeader, CharacterList },
+  data() {
+    return {
+      store
+    }
+  }
 }
 </script>
 

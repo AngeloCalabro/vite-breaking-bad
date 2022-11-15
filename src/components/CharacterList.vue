@@ -2,9 +2,9 @@
     <div class="container p-4 cards-container">
         <NavbarComponent @filtercategory="getCharacters"/> 
         <div class="black-bar">
-            <p>Found {{ characterList.length }} characters</p>
+            <p>Found {{ store.characterList.length }} characters</p>
         </div>
-        <CardComponent :characters="characterList" :loading="loading" />
+        <CardComponent :characters="store.characterList" :loading="store.loading" />
     </div>
 </template>
 
@@ -19,24 +19,33 @@ export default {
     data() {
         return {
             store,
-            apiUrl: 'https://www.breakingbadapi.com/api/characters',
-            characterList: [],
-            loading: false,
+            endPoint: 'characters',
         }
     },
     methods: {
         getCharacters() {
-            this.loading = true;
-            axios.get(this.apiUrl).then(
+            store.errormessage = '';
+            let options = null;
+            if (store.search.category) {
+                options = {
+                    params: {
+                        category: store.search.category,
+                    }
+                }
+            };
+            store.loading = true;
+            const apiurl = store.apiURL + this.endPoint;
+            axios.get(apiurl, options).then(
                 (res) => {
-                    this.characterList = [...res.data];
-                    console.log(this.characterList);
-                    this.loading = false;
+                    store.characterList = [...res.data];
+                    console.log(store.characterList);
+                    store.loading = false;
                 },
-            )
-            // .catch((error)=>{
-            // console.log(error)
-            // })
+            ).catch((error)=>{
+                store.characterList.length = 0;
+                store.loading = false;
+                store.errormessage = error.message
+            })
         }
     },
     created() {

@@ -5,8 +5,7 @@ export const store = reactive({
     characterList: [],
     loading: false,
     search: {
-        status: '',
-        name: ''
+        category: '',
     },
-    errormessage: ''
+    errormessage: '',
 });
