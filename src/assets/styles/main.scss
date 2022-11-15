@@ -9,8 +9,12 @@ $fa-font-path: '../webfonts';
 
 @import 'bootstrap/scss/bootstrap';
 
-body{
+body {
     font-family: $main-font;
-    color: $white-color;
     background-color: $bg-color;
+    color: white;
+}
+
+img {
+    max-width: 100%;
 }

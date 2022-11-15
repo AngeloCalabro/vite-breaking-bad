@@ -1,13 +1,9 @@
 <template>
-    <div class="container">
-        <div v-if="loading">
-            Sto caricando...
+    <div class="container p-4 cards-container">
+        <div class="black-bar">
+            <p>Found 62 characters</p>
         </div>
-        <div class="row" v-if="!loading">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3" v-for="(item, index) in character" :key="item.char_id">
-                <CardComponent :element="item"/>
-            </div>
-        </div>
+        <CardComponent :characters="characterList" :loading="loading" />
     </div>
 </template>
 
@@ -15,30 +11,28 @@
 import axios from 'axios';
 import CardComponent from './CardComponent.vue';
 export default {
-    components: {
-        CardComponent,
-    },
     name: 'CharacterList',
-    data(){
-        return{
-            apiURL: 'https://www.breakingbadapi.com/api/characters/',
-            character: [],
+    components: { CardComponent },
+    data() {
+        return {
+            apiUrl: 'https://www.breakingbadapi.com/api/characters',
+            characterList: [],
             loading: false,
-            
         }
     },
     methods: {
         getCharacters() {
             this.loading = true;
-            axios.get(this.apiURL).then(
+            axios.get(this.apiUrl).then(
                 (res) => {
                     this.characterList = [...res.data];
-                    console.log(this.characterList)
+                    console.log(this.characterList);
                     this.loading = false;
-                }
-            ).catch((error) => {
-                console.log(error);
-            })
+                },
+            )
+            // .catch((error)=>{
+            // console.log(error)
+            // })
         }
     },
     created() {
@@ -48,5 +42,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use '../assets/styles/partials/variables' as *;
 
+.cards-container {
+    background-color: white;
+}
+
+.black-bar {
+    background-color: $black-bar;
+    font-weight: bold;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 10px;
+}
 </style>

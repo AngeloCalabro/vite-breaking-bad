@@ -1,22 +1,23 @@
 <template>
-    <div>
-        <header class="container">
-            <h1 class="my-5">{{ title }}</h1>
-        </header>
-    </div>
+    <header class="p-2">
+        <img src="https://www.breakingbadapi.com/static/media/breaking_bad.6d275852.jpg" alt="breaking-bad logo">
+        <span class="text-capitalize fw-bold">Breaking Bad Api</span>
+    </header>
 </template>
 
 <script>
 export default {
-    name: 'AppHeader',
-    props: {
-        title: String
-    }
+    name: 'AppHeader'
 }
 </script>
 
 <style lang="scss" scoped>
-h1 {
-    font-weight: 700;
+header img {
+    width: 50px
+}
+
+header span {
+    font-size: 25px;
+    vertical-align: middle;
 }
 </style>
